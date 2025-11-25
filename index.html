@@ -1,274 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Robbyyy — Game Programmer Portfolio</title>
-  <meta name="description" content="Portfolio di Robbyyy: game programmer, modding FL26, simulazioni e world-building.">
-  <meta property="og:title" content="Robbyyy — Game Programmer Portfolio">
-  <meta property="og:description" content="Progetti, modding e contatti.">
-  <meta property="og:type" content="website">
-  <meta name="color-scheme" content="light dark">
-  <style>
-    :root {
-      --bg: #0f1120;
-      --text: #e8eaf6;
-      --muted: #b8bfd6;
-      --accent: #7aa2f7;
-      --accent-2: #98c379;
-      --card: #15172c;
-      --border: #2a2f4a;
-      --link: #82aaff;
-      --shadow: 0 8px 24px rgba(0,0,0,0.25);
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f8f9fd;
-        --text: #1f2335;
-        --muted: #3f4a6e;
-        --accent: #2b6cb0;
-        --accent-2: #2f855a;
-        --card: #ffffff;
-        --border: #e4e7f0;
-        --link: #1a73e8;
-        --shadow: 0 8px 24px rgba(31,35,53,0.08);
-      }
-    }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-    header {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 16px;
-      padding: 24px 0;
-    }
-    .brand h1 {
-      font-size: 1.8rem;
-      margin: 0;
-      letter-spacing: 0.2px;
-    }
-    .brand p {
-      margin: 6px 0 0;
-      color: var(--muted);
-    }
-    nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--card);
-    }
-    .hero {
-      margin: 16px 0 24px;
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-    }
-    .hero h2 { margin: 0 0 8px; font-size: 1.6rem; }
-    .hero p { margin: 0; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .card {
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--card);
-    }
-    .card h3 { margin-top: 0; }
-    .pill {
-      display: inline-block;
-      padding: 6px 10px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: transparent;
-      color: var(--muted);
-      margin: 4px 6px 0 0;
-      font-size: 0.92rem;
-    }
-    .cta {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: white;
-      font-weight: 600;
-      box-shadow: var(--shadow);
-    }
-    .cta.secondary { background: var(--accent-2); }
-    footer {
-      margin-top: 32px;
-      padding: 24px 0 48px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    /* Accessibility helpers */
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-    img { max-width: 100%; height: auto; border-radius: 12px; }
-    /* Print-friendly CV section */
-    @media print {
-      nav, .cta, footer { display: none; }
-      .card { box-shadow: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Roberto Felice Dinapoli</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header aria-label="Intestazione del sito">
-      <div class="brand">
-        <h1>Robbyyy</h1>
-        <p>Game programmer • Modding & Simulation • Italia</p>
-      </div>
-      <nav aria-label="Navigazione">
-        <a href="#progetti">Progetti</a>
-        <a href="#competenze">Competenze</a>
-        <a href="#esperienza">Esperienza</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-    </header>
+    <!-- Canvas per particelle -->
+    <canvas id="bg-canvas"></canvas>
 
-    <section class="hero" aria-label="Presentazione">
-      <h2>Creo esperienze tecniche con atmosfera reale</h2>
-      <p>
-        Sono uno sviluppatore in formazione all'ITS Olivetti Academy con focus su gameplay, tool e modding.
-        Mi piace unire logica, dati e cura dei dettagli per simulazioni credibili: dal mapping degli stadi
-        a sistemi di banner e asset management in Football Life 2026.
-      </p>
-      <a class="cta" href="#contatti">Disponibile per stage</a>
-      <a class="cta secondary" href="#cv">Scarica CV</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Progetti</a></li>
+            <li><a href="#skills">Competenze</a></li>
+            <li><a href="#contacts">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home -->
+    <section id="home" class="section home">
+        <div class="home-content">
+            <h1>Roberto Felice Dinapoli</h1>
+            <h2 id="dynamic-text">Programmatore</h2>
+            <p>
+                Sono un aspirante programmatore di videogiochi con principale competenza Unity e C#.  
+                Mi piace creare esperienze immersive, curare i dettagli tecnici e dare vita a mondi interattivi.
+            </p>
+        </div>
     </section>
 
-    <section id="progetti" aria-label="Progetti">
-      <h2>Progetti selezionati</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>FL26 — Italian Stadium Atmosphere</h3>
-          <p>Pipeline per attivare striscioni, bandiere e mapping coerente tra cartelle stadio e assegnazioni team.</p>
-          <ul>
-            <li><span class="pill">Mapping logico</span><span class="pill">Asset merge</span><span class="pill">QA</span></li>
-          </ul>
-          <p>
-            Ho unificato la nomenclatura e la logica di caricamento per mostrare banner realistici anche fuori dai derby,
-            riducendo fallback ai default e migliorando l’autenticità visiva.
-          </p>
-          <a class="cta" href="https://github.com/USERNAME/REPO" rel="noopener">Vedi su GitHub</a>
-        </article>
-
-        <article class="card">
-          <h3>ETS2 — Italia Route Enhancer</h3>
-          <p>Mod di qualità della vita per itinerari regionali, punti d’interesse e resa atmosferica.</p>
-          <ul>
-            <li><span class="pill">Data design</span><span class="pill">Scripting</span><span class="pill">Testing</span></li>
-          </ul>
-          <a class="cta" href="https://github.com/USERNAME/REPO2" rel="noopener">Dettagli</a>
-        </article>
-
-        <article class="card">
-          <h3>Yu‑Gi‑Oh! Deck Canon Builder</h3>
-          <p>Script e linee guida per ricreare mazzi anime‑accurate con vincoli di gioco.</p>
-          <ul>
-            <li><span class="pill">Parsing</span><span class="pill">Rule mapping</span><span class="pill">UX notes</span></li>
-          </ul>
-          <a class="cta" href="https://github.com/USERNAME/REPO3" rel="noopener">Repository</a>
-        </article>
-      </div>
+    <!-- Projects -->
+    <section id="projects" class="section projects">
+        <h2>I miei Progetti</h2>
+        <div class="project-card">
+            <h3>Echo of Crete</h3>
+            <span class="status completed">Completato</span>
+            <p><strong>Tempo di sviluppo:</strong> 6 mesi</p>
+            <p>Descrizione</p>
+        </div>
+        <div class="project-card">
+            <h3>Safety Hunter</h3>
+            <span class="status in-progress">In Corso</span>
+            <p><strong>Tempo di sviluppo:</strong> 3 mesi</p>
+            <p>Descrizione</p>
+        </div>
     </section>
 
-    <section id="competenze" aria-label="Competenze">
-      <h2>Competenze tecniche</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Programmazione</h3>
-          <p>C#, C++, Python (tooling), Git, CLI, testing unitario e integrazione semplice.</p>
-          <ul>
-            <li><span class="pill">Design pulito</span><span class="pill">Refactoring</span><span class="pill">Debug avanzato</span></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Modding & asset pipeline</h3>
-          <p>Analisi struttura file, merging asset, mapping team/stadio, QA e documentazione tecnica.</p>
-          <ul>
-            <li><span class="pill">Striscioni & flags</span><span class="pill">Atmosfera</span><span class="pill">Automazioni</span></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Sicurezza digitale</h3>
-          <p>Password hygiene, 2FA, audit dei log, indagini su accessi e coerenza dispositivo‑account.</p>
-          <ul>
-            <li><span class="pill">Threat modeling</span><span class="pill">Incident notes</span></li>
-          </ul>
-        </div>
-      </div>
+    <!-- Skills -->
+    <section id="skills" class="section skills">
+        <h2>Competenze</h2>
+        <p>
+            Ho una solida preparazione in programmazione e sono capace di adattarmi alle esigenze di un team.  
+            Le mie competenze principali includono Unity, C#, C++, gestione di asset e modding per realismo.  
+            Mi piace unire creatività e tecnica per costruire esperienze di gioco autentiche e coinvolgenti.
+        </p>
     </section>
 
-    <section id="esperienza" aria-label="Esperienza">
-      <h2>Formazione & esperienza</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>ITS Olivetti Academy — Game Programmer</h3>
-          <p>Preparazione solida su linguaggi, strumenti e lavoro in team. Adattabile alle esigenze del progetto.</p>
-        </div>
-        <div class="card">
-          <h3>Progetti personali</h3>
-          <p>Simulazioni e modding focalizzati su autenticità culturale italiana e resa tecnica affidabile.</p>
-        </div>
-      </div>
+    <!-- Contacts -->
+    <section id="contacts" class="section contacts">
+        <h2>Contatti</h2>
+        <p>Vuoi collaborare con me? 🚀</p>
+        <p>Email: <a href="mailto:roberto.dinapoli@example.com">roberto.dinapoli@example.com</a></p>
+        <p>Discord: <strong>Robbyyy#1234</strong></p>
     </section>
 
-    <section id="cv" aria-label="CV">
-      <h2>Curriculum</h2>
-      <p>
-        Scarica la versione PDF del mio CV:
-        <a href="assets/CV_Robbyyy.pdf" download>CV_Robbyyy.pdf</a>
-      </p>
-    </section>
-
-    <section id="contatti" aria-label="Contatti">
-      <h2>Contatti</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Preferisci scrivermi?</h3>
-          <p>Email: <a href="mailto:tuo.nome@example.com">tuo.nome@example.com</a></p>
-          <p>GitHub: <a href="https://github.com/USERNAME" rel="noopener">github.com/USERNAME</a></p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/USERNAME" rel="noopener">linkedin.com/in/USERNAME</a></p>
-        </div>
-        <div class="card">
-          <h3>Disponibilità</h3>
-          <p>Automunito, disponibile in Emilia‑Romagna e remoto. Aperto a stage e collaborazione su tool/engine.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer aria-label="Footer">
-      <p>© <span id="year"></span> Robbyyy. Costruito con HTML/CSS, pronto per GitHub Pages.</p>
+    <footer>
+        <p>© 2025 Roberto Felice Dinapoli - Portfolio</p>
     </footer>
-  </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>

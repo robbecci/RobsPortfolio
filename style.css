@@ -1,0 +1,30 @@
+/* Home image */
+.home-img {
+    margin-top: 2rem;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* Bottoni scarica */
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: #ff6600;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.btn:hover {
+    background: #ff8533;
+    transform: scale(1.1);
+}
